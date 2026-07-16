@@ -1,1 +1,31 @@
+name: Generate Pluto US EPG
 
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Pluto US XMLTV
+        run: npm run grab --- --channels=sites/pluto.tv/pluto.tv_us.channels.xml --output=pluto_us.xml
+
+      - name: Upload XML
+        uses: actions/upload-artifact@v4
+        with:
+          name: pluto-us-epg
+          path: pluto_us.xml
