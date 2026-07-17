@@ -3,11 +3,17 @@ name: Generate Pluto US EPG
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
+    # 12:00 AM AST (04:00 UTC)
+    - cron: "0 4 * * *"
+    # 12:00 PM AST (16:00 UTC)
+    - cron: "0 16 * * *"
 
 jobs:
   generate:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
@@ -21,11 +27,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Generate Pluto US XMLTV
-        run: npm run grab --- --channels=sites/pluto.tv/pluto.tv_us.channels.xml --output=pluto_us.xml
+      - name: Create XMLTV folder
+        run: mkdir -p XMLTV
 
-      - name: Upload XML
-        uses: actions/upload-artifact@v4
-        with:
-          name: pluto-us-epg
-          path: pluto_us.xml
+      - name: Generate Pluto US XMLTV
+        run: npm run grab -- --channels=sites/pluto.tv/pluto.tv_us.channels.xml --output=XMLTV/pluto_us.xml
+
+      - name: Commit updated XML
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add XMLTV/pluto_us.xml
+
+          git diff --cached --quiet || git commit -m "Update Pluto US EPG"
+
+          git push
