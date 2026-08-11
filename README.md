@@ -1,5 +1,8 @@
 # EPG [![update](https://github.com/iptv-org/epg/actions/workflows/update.yml/badge.svg)](https://github.com/iptv-org/epg/actions/workflows/update.yml)
 
+**EPGs being updated:**
+us_pluto (m3u8 and xml)
+
 Tools for downloading the EPG (Electronic Program Guide) for thousands of TV channels from hundreds of sources.
 
 ## Table of contents
