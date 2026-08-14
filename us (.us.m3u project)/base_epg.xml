@@ -5,4 +5,5 @@
   <!-- 3ABN French EPG not found/not available -->
   <channel site="epg.pw" site_id="464947" lang="en" xmltv_id="3ABNInternational">3ABN International</channel>
   <channel site="epg.pw" site_id="562457" lang="en" xmltv_id="3ABNKids">3ABN Kids</channel>
+  <channel site="mi.tv" site_id="hn#3abn-latino" lang="es" xmltv_id="3ABNLatino">3ABN Latino</channel>
 </channels>
