@@ -12,4 +12,7 @@
   <!-- 4KUniverse EPG not found/not available --> <!-- TENTH CHANNEL!! -->
   <!-- 5 Building Britain EPG not found/not available -->
   <channel site="pluto.tv" site_id="5d2c571faeb3e2738ae27933" lang="en" xmltv_id="5Cops">5 Cops</channel>
+  <!-- 5 Cruising With Jane McDonald EPG not found/not available -->
+  <!-- 5 Destination Britain EPG not found/not available -->
+  <!-- 5 GP's EPG not found/not available -->
 </channels>
